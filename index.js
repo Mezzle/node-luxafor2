@@ -43,8 +43,7 @@ class Luxafor {
         });
     }
 
-    strobeColor(red, green, blue, cb = undefined) {
-    	var buff = new Buffer(8);
+    strobe(red, green, blue, cb = undefined) {
         this.newBuffer(8);
     	this.buffer.writeUInt8(API.COMMAND.STROBE, API.BYTE.COMMAND);
     	this.buffer.writeUInt8(API.LED.ALL, API.BYTE.LED);
@@ -56,6 +55,13 @@ class Luxafor {
     	this.buffer.writeUInt8(3, API.BYTE.STROBE_REPEAT);
         this.flushBuffer(cb);
     };
+
+    simpleColor(char, cb = undefined) {
+        this.newBuffer(2);
+        this.buffer.writeUInt8(API.COMMAND.SET_COLOR_SIMPLE, API.BYTE.COMMAND);
+        this.buffer.writeUInt8(char, 0x01);
+        this.flushBuffer(cb);
+    }
 
     setColor(red, green, blue, cb = undefined) {
         this.newBuffer(5);
