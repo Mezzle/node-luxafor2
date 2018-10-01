@@ -43,6 +43,34 @@ class Luxafor {
         });
     }
 
+    simpleColor(char, cb = undefined) {
+        this.newBuffer(2);
+        this.buffer.writeUInt8(API.COMMAND.SET_COLOR_SIMPLE, API.BYTE.COMMAND);
+        this.buffer.writeUInt8(char, 0x01);
+        this.flushBuffer(cb);
+    }
+
+    color(led, red, green, blue, cb = undefined) {
+        this.newBuffer(5);
+    	this.buffer.writeUInt8(API.COMMAND.SET_COLOR_NO_FADE, API.BYTE.COMMAND);
+    	this.buffer.writeUInt8(led, API.BYTE.LED);
+        this.buffer.writeUInt8(red, API.BYTE.RED);
+        this.buffer.writeUInt8(green, API.BYTE.GREEN);
+        this.buffer.writeUInt8(blue, API.BYTE.BLUE);
+        this.flushBuffer(cb);
+    };
+
+    colorFade(led, red, green, blue, time, cb = undefined) {
+        this.newBuffer(6);
+    	this.buffer.writeUInt8(API.COMMAND.SET_COLOR_FADE, API.BYTE.COMMAND);
+    	this.buffer.writeUInt8(led, API.BYTE.LED);
+        this.buffer.writeUInt8(red, API.BYTE.RED);
+        this.buffer.writeUInt8(green, API.BYTE.GREEN);
+        this.buffer.writeUInt8(blue, API.BYTE.BLUE);
+        this.buffer.writeUInt8(time, API.BYTE.TIME);
+        this.flushBuffer(cb);
+    };
+
     strobe(red, green, blue, cb = undefined) {
         this.newBuffer(8);
     	this.buffer.writeUInt8(API.COMMAND.STROBE, API.BYTE.COMMAND);
@@ -53,23 +81,6 @@ class Luxafor {
     	this.buffer.writeUInt8(10, API.BYTE.TIME);
     	this.buffer.writeUInt8(0, API.BYTE.STROBE_PADDING);
     	this.buffer.writeUInt8(3, API.BYTE.STROBE_REPEAT);
-        this.flushBuffer(cb);
-    };
-
-    simpleColor(char, cb = undefined) {
-        this.newBuffer(2);
-        this.buffer.writeUInt8(API.COMMAND.SET_COLOR_SIMPLE, API.BYTE.COMMAND);
-        this.buffer.writeUInt8(char, 0x01);
-        this.flushBuffer(cb);
-    }
-
-    setColor(red, green, blue, cb = undefined) {
-        this.newBuffer(5);
-    	this.buffer.writeUInt8(API.COMMAND.SET_COLOR_FADE, API.BYTE.COMMAND);
-    	this.buffer.writeUInt8(API.LED.ALL, API.BYTE.LED);
-        this.buffer.writeUInt8(red, API.BYTE.RED);
-        this.buffer.writeUInt8(green, API.BYTE.GREEN);
-        this.buffer.writeUInt8(blue, API.BYTE.BLUE);
         this.flushBuffer(cb);
     };
 
