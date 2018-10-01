@@ -1,21 +1,12 @@
 var usb = require('usb');
 var Luxafor;
+const LUX_PID = 0xf372;
+const LUX_VID = 0x04d8;
 
 Luxafor = function () {
-	this.pid = 0xf372;
-	this.vid = 0x04d8;
+	this.pid = LUX_PID;
+	this.vid = LUX_VID;
 	this.endpoint = undefined;
-
-	this.colors = {
-		"red": 82,
-		"green": 71,
-		"blue": 66,
-		"cyan": 67,
-		"magenta": 77,
-		"yellow": 89,
-		"white": 87,
-		"off": 79
-	};
 }
 
 Luxafor.prototype.init = function (cb) {
@@ -44,6 +35,7 @@ Luxafor.prototype.init = function (cb) {
 	});
 };
 
+/*
 Luxafor.prototype.setLuxaforColor = function (color, cb) {
 	var buff =  new Buffer(2);
 
@@ -58,6 +50,7 @@ Luxafor.prototype.setLuxaforColor = function (color, cb) {
 		}
 	});
 };
+*/
 
 Luxafor.prototype.flashColor = function (r, g, b, cb) {
 	var buff = new Buffer(8);

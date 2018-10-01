@@ -12,9 +12,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/dave-irvine/node-luxafor.git"
+    "url": "git+ssh://git@github.com:jonathonball/node-luxafor.git"
   },
-  "author": "Dave Irvine <dave@daveirvine.me>",
+  "author": "Jonathon Ball <jonathon.ball@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "usb": "^1.1.0"
