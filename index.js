@@ -1,13 +1,12 @@
 var usb = require('usb');
-const LUX_PID = 0xf372;
-const LUX_VID = 0x04d8;
-
+const API = require('./lib/constants');
 class Luxafor {
 
     constructor() {
-        this.pid = LUX_PID;
-    	this.vid = LUX_VID;
+        this.pid = API.PID;
+    	this.vid = API.VID;
     	this.endpoint = undefined;
+        this.API = API;
     }
 
     init(cb) {
@@ -64,7 +63,7 @@ class Luxafor {
     	});
     };
 
-    setColor(r, g, b, cb) {
+    setColor(r, g, b, cb = undefined) {
     	var buff = new Buffer(5);
 
     	//Jump
@@ -83,17 +82,47 @@ class Luxafor {
     	});
     };
 
-    wave(type, r, g, b, repeat, speed) {
-        var buff = new Buffer(8);
-        buff.writeUInt8(4, 0);
-        buff.writeUInt8(1, 1);
-        buff.writeUInt8(255, 2);
-        buff.writeUInt8(0, 3);
-        buff.writeUInt8(0, 4);
-        buff.writeUInt8(0, 5);
-        buff.writeUInt8(10, 6);
-        buff.writeUInt8(10, 7);
-        this.endpoint.transfer(buff);
+    /**
+     * @param Number type 0-5 the type of wave
+     * @param Number red 0-255 red value
+     * @param Number green 0-255 green value
+     * @param Number blue 0-255 blue value
+     * @param Number repeat 0-255, 0=forever, 1-255 # of iterations
+     * @param Number speed 0-255 0 = fast, 255 = slow
+     * @param Function a callback to execute
+     */
+    wave(type, r, g, b, repeat, speed, cb = undefined) {
+        this.newBuffer(8);
+        this.command(API.COMMAND.WAVE);
+        this.buffer.writeUInt8(type, API.BYTE.WAVE_TYPE);
+        this.rgb(r, g, b);
+        this.buffer.writeUInt8(0, API.BYTE.WAVE_PADDING);
+        this.buffer.writeUInt8(repeat, API.BYTE.WAVE_REPEAT);
+        this.buffer.writeUInt8(speed, API.BYTE.WAVE_SPEED);
+        this.flushBuffer(cb);
+    }
+
+    newBuffer(size) {
+        this.buffer = null;
+        this.buffer = new Buffer(size);
+    }
+
+    flushBuffer(callback = undefined) {
+        this.endpoint.transfer(this.buffer, function() {
+            if (callback) {
+                callback();
+            }
+        });
+    }
+
+    command(command) {
+        this.buffer.writeUInt8(command, API.BYTE.COMMAND);
+    }
+
+    rgb(red, green, blue) {
+        this.buffer.writeUInt8(red, API.BYTE.RED);
+        this.buffer.writeUInt8(green, API.BYTE.GREEN);
+        this.buffer.writeUInt8(blue, API.BYTE.BLUE);
     }
 
 }
