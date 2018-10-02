@@ -46,10 +46,10 @@ Set a color
 
 | Param | Type | Description |
 | --- | --- | --- |
-| led | <code>Number</code> | [0-6] the light to control |
-| red | <code>Number</code> | [0..255] red value |
-| green | <code>Number</code> | [0-255] green value |
-| blue | <code>Number</code> | [0-255] blue value |
+| led | <code>Number</code> | `0..6` the light to control |
+| red | <code>Number</code> | `0..255` red value |
+| green | <code>Number</code> | `0..255` green value |
+| blue | <code>Number</code> | `0..255` blue value |
 | cb | <code>function</code> | callback to execute |
 
 <a name="Luxafor+colorFade"></a>
@@ -61,11 +61,11 @@ Set a color and then fade
 
 | Param | Type | Description |
 | --- | --- | --- |
-| led | <code>Number</code> | [0-6] the light to control |
-| red | <code>Number</code> | [0..255] red value |
-| green | <code>Number</code> | [0-255] green value |
-| blue | <code>Number</code> | [0-255] blue value |
-| time | <code>Number</code> | [0-255] length of fade effect |
+| led | <code>Number</code> | `0..6` the light to control |
+| red | <code>Number</code> | `0..255` red value |
+| green | <code>Number</code> | `0..255` green value |
+| blue | <code>Number</code> | `0..255` blue value |
+| time | <code>Number</code> | `0..255` length of fade effect |
 | cb | <code>function</code> | callback to execute |
 
 <a name="Luxafor+strobe"></a>
@@ -77,12 +77,12 @@ Make the light strobe
 
 | Param | Type | Description |
 | --- | --- | --- |
-| led | <code>Number</code> | [0-6] the light to control |
-| red | <code>Number</code> | [0..255] red value |
-| green | <code>Number</code> | [0-255] green value |
-| blue | <code>Number</code> | [0-255] blue value |
-| time | <code>Number</code> | [0-255] length of strobe effect |
-| repeat | <code>Number</code> | [0-255] number of iterations, 0 is infinite |
+| led | <code>Number</code> | `0..6` the light to control |
+| red | <code>Number</code> | `0..255` red value |
+| green | <code>Number</code> | `0..255` green value |
+| blue | <code>Number</code> | `0..255` blue value |
+| time | <code>Number</code> | `0..255` length of strobe effect |
+| repeat | <code>Number</code> | `0..255` number of iterations, 0 is infinite |
 | cb | <code>function</code> | callback to execute |
 
 <a name="Luxafor+wave"></a>
@@ -94,12 +94,12 @@ Make the light display a wave pattern
 
 | Param | Type | Description |
 | --- | --- | --- |
-| type | <code>Number</code> | [0..5] the type of wave |
-| red | <code>Number</code> | [0..255] red value |
-| green | <code>Number</code> | [0-255] green value |
-| blue | <code>Number</code> | [0-255] blue value |
-| repeat | <code>Number</code> | [0-255] number of iterations, 0 is infinite |
-| speed | <code>Number</code> | [0-255] 0 is faster |
+| type | <code>Number</code> | `0..5` the type of wave |
+| red | <code>Number</code> | `0..255` red value |
+| green | <code>Number</code> | `0..255` green value |
+| blue | <code>Number</code> | `0..255` blue value |
+| repeat | <code>Number</code> | `0..255` number of iterations, 0 is infinite |
+| speed | <code>Number</code> | `0..255` 0 is faster |
 | cb | <code>function</code> | callback to execute |
 
 <a name="Luxafor+pattern"></a>
@@ -111,7 +111,7 @@ Run the light through preprogrammed sequences
 
 | Param | Type | Description |
 | --- | --- | --- |
-| pattern | <code>Number</code> | [0..8] the preset pattern to use |
-| repeat | <code>Number</code> | [0-255] number of iterations, 0 is infinite |
+| pattern | <code>Number</code> | `0..8` the preset pattern to use |
+| repeat | <code>Number</code> | `0..255` number of iterations, 0 is infinite |
 | cb | <code>function</code> | callback to execute |
 
