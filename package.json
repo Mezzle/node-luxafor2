@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "documentation": "jsdoc -c jsdoc.json -R README.md -d ./docs lib/luxafor.js"
+    "readme": "node_modules/jsdoc-to-markdown/bin/cli.js lib/luxafor.js > ./README.md"
   },
   "keywords": [
     "luxafor",
@@ -22,6 +22,6 @@
     "yargs": "^12.0.2"
   },
   "devDependencies": {
-    "jsdoc": "^3.5.5"
+    "jsdoc-to-markdown": "^4.0.1"
   }
 }
