@@ -15,6 +15,9 @@
     "type": "git",
     "url": "git+ssh://git@github.com:jonathonball/node-luxafor.git"
   },
+  "bugs": {
+      "url": "https://github.com/jonathonball/node-luxafor2/issues"
+  },
   "author": "Jonathon Ball <jonathon.ball@gmail.com>",
   "contributors": [{
       "name": "Dave Irvine",
