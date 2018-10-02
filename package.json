@@ -1,7 +1,7 @@
 {
-  "name": "luxafor",
-  "version": "1.1.1",
-  "description": "Control Luxafor Notification Light With Node.js",
+  "name": "node-luxafor2",
+  "version": "0.9.9",
+  "description": "Updated control for Luxafor notification light",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -16,6 +16,10 @@
     "url": "git+ssh://git@github.com:jonathonball/node-luxafor.git"
   },
   "author": "Jonathon Ball <jonathon.ball@gmail.com>",
+  "contributors": [{
+      "name": "Dave Irvine",
+      "email": "dave@daveirvine.me"
+  }],
   "license": "MIT",
   "dependencies": {
     "usb": "^1.1.0"
