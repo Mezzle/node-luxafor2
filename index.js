@@ -1,5 +1,7 @@
 const Luxafor = require('./lib/luxafor');
+const API = require('./lib/constants');
 
-module.exports = function() {
-    return new Luxafor();
+module.exports = {
+    Luxafor: Luxafor,
+    API: API
 };
