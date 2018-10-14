@@ -33,6 +33,11 @@
     "jsdoc-to-markdown": "^4.0.1",
     "jshint": "^2.9.6",
     "mocha": "^5.2.0",
-    "nyc": "^13.0.1"
-  }
+    "nyc": "^13.0.1",
+    "pre-commit": "^1.2.2"
+  },
+  "pre-commit": [
+    "jshint",
+    "test"
+  ]
 }
