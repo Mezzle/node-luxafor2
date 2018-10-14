@@ -16,18 +16,23 @@
     "url": "git+ssh://git@github.com:jonathonball/node-luxafor.git"
   },
   "bugs": {
-      "url": "https://github.com/jonathonball/node-luxafor2/issues"
+    "url": "https://github.com/jonathonball/node-luxafor2/issues"
   },
   "author": "Jonathon Ball <jonathon.ball@gmail.com>",
-  "contributors": [{
+  "contributors": [
+    {
       "name": "Dave Irvine",
       "email": "dave@daveirvine.me"
-  }],
+    }
+  ],
   "license": "MIT",
   "dependencies": {
     "usb": "^1.1.0"
   },
   "devDependencies": {
-    "jsdoc-to-markdown": "^4.0.1"
+    "jsdoc-to-markdown": "^4.0.1",
+    "jshint": "^2.9.6",
+    "mocha": "^5.2.0",
+    "nyc": "^13.0.1"
   }
 }
