@@ -12,4 +12,10 @@ describe('Luxafor', function() {
             assert.strictEqual(lux.vid, API.VID);
         });
     });
+    describe.skip('#init', function() { });
+    describe('#getApiValue', function() {
+        it('should be able to fetch API values', function() {
+            assert.strictEqual(Luxafor.getApiValue('color', 'blue'), API.COLOR.BLUE);
+        });
+    });
 });
