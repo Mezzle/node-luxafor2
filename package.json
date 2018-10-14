@@ -4,8 +4,8 @@
   "description": "Updated control for Luxafor notification light",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "readme": "node_modules/jsdoc-to-markdown/bin/cli.js lib/luxafor.js > ./README.md"
+    "test": "nyc mocha",
+    "jshint": "jshint -c .jshintrc --exclude-path .gitignore ."
   },
   "keywords": [
     "luxafor",
