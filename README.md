@@ -6,18 +6,21 @@ Control a Luxafor light
 **Kind**: global class  
 
 * [Luxafor](#Luxafor)
-    * [.init(cb)](#Luxafor+init)
-    * [.simpleColor(char, cb)](#Luxafor+simpleColor)
-    * [.color(led, red, green, blue, cb)](#Luxafor+color)
-    * [.colorFade(led, red, green, blue, time, cb)](#Luxafor+colorFade)
-    * [.strobe(led, red, green, blue, time, repeat, cb)](#Luxafor+strobe)
-    * [.wave(type, red, green, blue, repeat, speed, cb)](#Luxafor+wave)
-    * [.pattern(pattern, repeat, cb)](#Luxafor+pattern)
+    * _instance_
+        * [.init(cb)](#Luxafor+init)
+        * [.simpleColor(char, cb)](#Luxafor+simpleColor)
+        * [.color(led, red, green, blue, cb)](#Luxafor+color)
+        * [.colorFade(led, red, green, blue, time, cb)](#Luxafor+colorFade)
+        * [.strobe(led, red, green, blue, time, repeat, cb)](#Luxafor+strobe)
+        * [.wave(type, red, green, blue, repeat, speed, cb)](#Luxafor+wave)
+        * [.pattern(pattern, repeat, cb)](#Luxafor+pattern)
+    * _static_
+        * [.getApiValue(haystack, needle)](#Luxafor.getApiValue)
 
 <a name="Luxafor+init"></a>
 
 ### luxafor.init(cb)
-Initialize the Luxafor light.  Thank you Dave Irvine.
+Initialize a single Luxafor light.  Thank you Dave Irvine.
 
 **Kind**: instance method of [<code>Luxafor</code>](#Luxafor)  
 
@@ -114,4 +117,18 @@ Run the light through preprogrammed sequences
 | pattern | <code>Number</code> | `0..8` the preset pattern to use |
 | repeat | <code>Number</code> | `0..255` number of iterations, 0 is infinite |
 | cb | <code>function</code> | callback to execute |
+
+<a name="Luxafor.getApiValue"></a>
+
+### Luxafor.getApiValue(haystack, needle)
+Get an API value by key from the API object
+Case insensitive
+
+**Kind**: static method of [<code>Luxafor</code>](#Luxafor)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| haystack | <code>String</code> | the string name of haystack |
+| needle | <code>String</code> | the key to search |
+|  | <code>Number</code> \| <code>Null</code> |  |
 
