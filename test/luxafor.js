@@ -16,8 +16,8 @@ describe('Luxafor', function() {
         it('should initialize a Luxafor light attached to this host', function() {
             let lux = new Luxafor();
             lux.init();
-            assert.strictEqual(lux.endpoint.device.deviceDescriptor.idVendor, API.VID);
-            assert.strictEqual(lux.endpoint.device.deviceDescriptor.idProduct, API.PID);
+            assert.strictEqual(lux.readEndpoint.device.deviceDescriptor.idVendor, API.VID);
+            assert.strictEqual(lux.readEndpoint.device.deviceDescriptor.idProduct, API.PID);
         });
     });
     describe('#getApiValue', function() {
