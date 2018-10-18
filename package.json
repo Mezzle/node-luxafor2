@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "nyc mocha",
-    "jshint": "node_modules/jshint/bin/jshint -c .jshintrc --exclude-path .gitignore ."
+    "jshint": "node_modules/jshint/bin/jshint -c .jshintrc --exclude-path .gitignore .",
+    "readme": "node_modules/jsdoc-to-markdown/bin/cli.js lib/luxafor.js > README.md"
   },
   "keywords": [
     "luxafor",

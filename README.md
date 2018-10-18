@@ -58,7 +58,8 @@ Set a color
 <a name="Luxafor+colorFade"></a>
 
 ### luxafor.colorFade(led, red, green, blue, time, cb)
-Set a color and then fade
+Instantly set a color then set the color change timer
+The time param causes the specified time delay to occur on all subsequent calls to color
 
 **Kind**: instance method of [<code>Luxafor</code>](#Luxafor)  
 
