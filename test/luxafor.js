@@ -12,7 +12,14 @@ describe('Luxafor', function() {
             assert.strictEqual(lux.vid, API.VID);
         });
     });
-    describe.skip('#init', function() { });
+    describe('#init', function() {
+        it('should initialize a Luxafor light attached to this host', function() {
+            let lux = new Luxafor();
+            lux.init();
+            assert.strictEqual(lux.endpoint.device.deviceDescriptor.idVendor, API.VID);
+            assert.strictEqual(lux.endpoint.device.deviceDescriptor.idProduct, API.PID);
+        });
+    });
     describe('#getApiValue', function() {
         it('should be able to fetch API values', function() {
             assert.strictEqual(Luxafor.getApiValue('color', 'blue'), API.COLOR.BLUE);
