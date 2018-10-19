@@ -16,6 +16,7 @@ Control a Luxafor light
         * [.pattern(pattern, repeat, cb)](#Luxafor+pattern)
     * _static_
         * [.getApiValue(haystack, needle)](#Luxafor.getApiValue)
+        * [.findApiReply(buffer)](#Luxafor.findApiReply) ⇒ <code>String</code> \| <code>null</code>
 
 <a name="Luxafor+init"></a>
 
@@ -132,4 +133,15 @@ Case insensitive
 | haystack | <code>String</code> | the string name of haystack |
 | needle | <code>String</code> | the key to search |
 |  | <code>Number</code> \| <code>Null</code> |  |
+
+<a name="Luxafor.findApiReply"></a>
+
+### Luxafor.findApiReply(buffer) ⇒ <code>String</code> \| <code>null</code>
+Search to see if a reply buffer from the device is one we recognize
+
+**Kind**: static method of [<code>Luxafor</code>](#Luxafor)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| buffer | <code>Buffer</code> | The needle to search for |
 
