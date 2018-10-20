@@ -1,25 +1,25 @@
 const assert = require('assert');
 const {Luxafor, API} = require('..');
 
+
+
 describe('Luxafor', function() {
-    describe('#constructor', function() {
-        it('should know the Luxafor PID', function() {
-            let lux = new Luxafor();
-            assert.strictEqual(lux.pid, API.PID);
+
+    var luxafor = new Luxafor();
+
+    beforeEach(function() {
+        luxafor.init();
+    });
+
+    describe('#init()', function() {
+        it('should check that the attached device has the correct VID', function() {
+            assert.strictEqual(luxafor.readEndpoint.device.deviceDescriptor.idVendor, API.VID);
         });
-        it('should know the Luxafor VID', function() {
-            let lux = new Luxafor();
-            assert.strictEqual(lux.vid, API.VID);
+        it('should check that the attached device has the correct PID', function() {
+            assert.strictEqual(luxafor.readEndpoint.device.deviceDescriptor.idProduct, API.PID);
         });
     });
-    describe('#init', function() {
-        it('should initialize a Luxafor light attached to this host', function() {
-            let lux = new Luxafor();
-            lux.init();
-            assert.strictEqual(lux.readEndpoint.device.deviceDescriptor.idVendor, API.VID);
-            assert.strictEqual(lux.readEndpoint.device.deviceDescriptor.idProduct, API.PID);
-        });
-    });
+
     describe('#getApiValue', function() {
         it('should be able to fetch API values', function() {
             assert.strictEqual(Luxafor.getApiValue('color', 'blue'), API.COLOR.BLUE);
@@ -31,4 +31,21 @@ describe('Luxafor', function() {
             assert.strictEqual(Luxafor.getApiValue('wave_type', 'disco'), null);
         });
     });
+
+    describe('#getDeviceInfo', function() {
+        it('should get firmware and serial numbers from the light', function(done) {
+            luxafor.getDeviceInfo().then((deviceInfo) => {
+                // since we don't know what the firmware version, etc will be
+                // we're just going to make sure that the device is returning an object
+                // that has the correct keys.
+                let keysFromDeviceInfo = Object.keys(deviceInfo);
+                let keysFromAnEmptyBuffer = Object.keys(API.DEVICE_INFO(new Buffer(8).fill(0)));
+                assert.deepStrictEqual(keysFromDeviceInfo, keysFromAnEmptyBuffer);
+                done();
+            }).catch((err) => {
+                done(err);
+            });
+        });
+    });
+
 });
