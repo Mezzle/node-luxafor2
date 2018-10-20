@@ -33,14 +33,12 @@ describe('Luxafor', function() {
     });
 
     describe('#getDeviceInfo()', function() {
+        this.retries(4);
         it('should get firmware and serial numbers from the light', function(done) {
-            luxafor.getDeviceInfo().then((deviceInfo) => {
-                // since we don't know what the firmware version, etc will be
-                // we're just going to make sure that the device is returning an object
-                // that has the correct keys.
-                let keysFromDeviceInfo = Object.keys(deviceInfo);
-                let keysFromAnEmptyBuffer = Object.keys(API.DEVICE_INFO(new Buffer(8).fill(0)));
-                assert.deepStrictEqual(keysFromDeviceInfo, keysFromAnEmptyBuffer);
+            luxafor.getDeviceInfo().then((buffer) => {
+                assert.strictEqual(buffer.readUInt8(0,1), API.COMMAND.DEVICE_INFO);
+                assert.notStrictEqual(buffer.readUInt8(1,1), 0);
+                assert.notStrictEqual(buffer.readUInt8(2,1), 0);
                 done();
             }).catch((err) => {
                 done(err);
