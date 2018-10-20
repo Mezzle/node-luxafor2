@@ -20,7 +20,7 @@ describe('Luxafor', function() {
         });
     });
 
-    describe('#getApiValue', function() {
+    describe('#getApiValue()', function() {
         it('should be able to fetch API values', function() {
             assert.strictEqual(Luxafor.getApiValue('color', 'blue'), API.COLOR.BLUE);
             assert.strictEqual(Luxafor.getApiValue('WAVE_TYPE', 'unknown_5'), API.WAVE_TYPE.UNKNOWN_5);
@@ -32,7 +32,7 @@ describe('Luxafor', function() {
         });
     });
 
-    describe('#getDeviceInfo', function() {
+    describe('#getDeviceInfo()', function() {
         it('should get firmware and serial numbers from the light', function(done) {
             luxafor.getDeviceInfo().then((deviceInfo) => {
                 // since we don't know what the firmware version, etc will be
