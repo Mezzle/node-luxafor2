@@ -14,9 +14,10 @@ Control a Luxafor light
         * [.strobe(led, red, green, blue, time, repeat, cb)](#Luxafor+strobe)
         * [.wave(type, red, green, blue, repeat, speed, cb)](#Luxafor+wave)
         * [.pattern(pattern, repeat, cb)](#Luxafor+pattern)
+        * [.getDeviceInfo()](#Luxafor+getDeviceInfo) ⇒ <code>Buffer</code>
     * _static_
         * [.getApiValue(haystack, needle)](#Luxafor.getApiValue)
-        * [.findApiReply(buffer)](#Luxafor.findApiReply) ⇒ <code>String</code> \| <code>null</code>
+        * [.findApiReply(buffer)](#Luxafor.findApiReply) ⇒ <code>String</code> \| <code>Buffer</code>
 
 <a name="Luxafor+init"></a>
 
@@ -120,6 +121,13 @@ Run the light through preprogrammed sequences
 | repeat | <code>Number</code> | `0..255` number of iterations, 0 is infinite |
 | cb | <code>function</code> | callback to execute |
 
+<a name="Luxafor+getDeviceInfo"></a>
+
+### luxafor.getDeviceInfo() ⇒ <code>Buffer</code>
+Get FW_VERSION, SERIAL_NUMBER_H, SERIAL_NUMBER_L from the device
+There's no additional information about the meaning of H or L
+
+**Kind**: instance method of [<code>Luxafor</code>](#Luxafor)  
 <a name="Luxafor.getApiValue"></a>
 
 ### Luxafor.getApiValue(haystack, needle)
@@ -136,10 +144,14 @@ Case insensitive
 
 <a name="Luxafor.findApiReply"></a>
 
-### Luxafor.findApiReply(buffer) ⇒ <code>String</code> \| <code>null</code>
+### Luxafor.findApiReply(buffer) ⇒ <code>String</code> \| <code>Buffer</code>
 Search to see if a reply buffer from the device is one we recognize
 
 **Kind**: static method of [<code>Luxafor</code>](#Luxafor)  
+**Throws**:
+
+- Will freak out if the device returns an unrecognized byte
+
 
 | Param | Type | Description |
 | --- | --- | --- |
