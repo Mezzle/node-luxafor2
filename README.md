@@ -14,7 +14,7 @@ Control a Luxafor light
         * [.strobe(led, red, green, blue, time, repeat, cb)](#Luxafor+strobe)
         * [.wave(type, red, green, blue, repeat, speed, cb)](#Luxafor+wave)
         * [.pattern(pattern, repeat, cb)](#Luxafor+pattern)
-        * [.getDeviceInfo()](#Luxafor+getDeviceInfo) ⇒ <code>Buffer</code>
+        * [.getDeviceInfo()](#Luxafor+getDeviceInfo) ⇒ <code>Promise</code>
     * _static_
         * [.getApiValue(haystack, needle)](#Luxafor.getApiValue)
         * [.findApiReply(buffer)](#Luxafor.findApiReply) ⇒ <code>String</code> \| <code>Buffer</code>
@@ -123,11 +123,12 @@ Run the light through preprogrammed sequences
 
 <a name="Luxafor+getDeviceInfo"></a>
 
-### luxafor.getDeviceInfo() ⇒ <code>Buffer</code>
+### luxafor.getDeviceInfo() ⇒ <code>Promise</code>
 Get FW_VERSION, SERIAL_NUMBER_H, SERIAL_NUMBER_L from the device
 There's no additional information about the meaning of H or L
 
 **Kind**: instance method of [<code>Luxafor</code>](#Luxafor)  
+**Returns**: <code>Promise</code> - <code>Buffer</code>  
 <a name="Luxafor.getApiValue"></a>
 
 ### Luxafor.getApiValue(haystack, needle)
