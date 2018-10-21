@@ -23,10 +23,18 @@ describe('Luxafor', function() {
     });
 
     describe('#resetWriteBuffer()', function() {
-        it('should be able to reset a previosly set write buffer', function() {
+        it('should be able to reset a previously set write buffer', function() {
             luxafor.buffer = Buffer.from([0x69]);
             luxafor.resetWriteBuffer(1);
             assert.strictEqual(luxafor.buffer.readUInt8(0,1), 0);
+        });
+    });
+
+    describe('#setWriteBufferByte()', function() {
+        it('should be able to write a byte in the write buffer', function() {
+            luxafor.resetWriteBuffer(1);
+            luxafor.setWriteBufferByte(0, 0x69);
+            assert.strictEqual(luxafor.buffer.readUInt8(0,1), 0x69);
         });
     });
 
