@@ -16,7 +16,10 @@ describe('Luxafor', function() {
             assert.strictEqual(luxafor.readEndpoint.device.deviceDescriptor.idVendor, API.VID);
         });
         it('should check that the attached device has the correct PID', function() {
-            assert.strictEqual(luxafor.readEndpoint.device.deviceDescriptor.idProduct, API.PID);
+            assert.strictEqual(luxafor.writeEndpoint.device.deviceDescriptor.idProduct, API.PID);
+        });
+        it('should accept a callback on init', function(done) {
+            luxafor.init(() => { done(); });
         });
     });
 
@@ -32,6 +35,15 @@ describe('Luxafor', function() {
         });
     });
 
+    describe('#isDeviceInfoBuffer()', function() {
+        let goodBuffer = Buffer.from([API.COMMAND.DEVICE_INFO, 0, 0, 0, 0, 0, 0, 0]);
+        let badBuffer = API.REPLY.WAVE_5;
+        it('should determine if a buffer is a DEVICE_INFO buffer', function() {
+            assert.strictEqual(Luxafor.isDeviceInfoBuffer(goodBuffer), true);
+            assert.strictEqual(Luxafor.isDeviceInfoBuffer(badBuffer), false);
+        });
+    });
+
     describe('#getDeviceInfo()', function() {
         this.retries(4);
         it('should get firmware and serial numbers from the light', function(done) {
@@ -43,15 +55,6 @@ describe('Luxafor', function() {
             }).catch((err) => {
                 done(err);
             });
-        });
-    });
-
-    describe('#isDeviceInfoBuffer()', function() {
-        let goodBuffer = Buffer.from([API.COMMAND.DEVICE_INFO, 0, 0, 0, 0, 0, 0, 0]);
-        let badBuffer = API.REPLY.WAVE_5;
-        it('should determine if a buffer is a DEVICE_INFO buffer', function() {
-            assert.strictEqual(Luxafor.isDeviceInfoBuffer(goodBuffer), true);
-            assert.strictEqual(Luxafor.isDeviceInfoBuffer(badBuffer), false);
         });
     });
 
