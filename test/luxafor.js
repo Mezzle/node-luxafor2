@@ -50,8 +50,8 @@ describe('Luxafor', function() {
         let goodBuffer = Buffer.from([API.COMMAND.DEVICE_INFO, 0, 0, 0, 0, 0, 0, 0]);
         let badBuffer = API.REPLY.WAVE_5;
         it('should determine if a buffer is a DEVICE_INFO buffer', function() {
-            assert.strictEqual(luxafor.isDeviceInfoBuffer(goodBuffer), true);
-            assert.strictEqual(luxafor.isDeviceInfoBuffer(badBuffer), false);
+            assert.strictEqual(Luxafor.isDeviceInfoBuffer(goodBuffer), true);
+            assert.strictEqual(Luxafor.isDeviceInfoBuffer(badBuffer), false);
         });
     });
 
