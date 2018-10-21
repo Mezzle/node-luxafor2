@@ -40,10 +40,13 @@ describe('Luxafor', function() {
     });
 
     describe('#readFromDevice()', function() {
-        it('should be able to read the off state', function() {
+        it('should be able to read the OFF state', function() {
             luxafor.readFromDevice().then((reply) => {
                 assert.strictEqual(API.REPLY.OFF.compare(reply), 0);
             });
+        });
+        it('should take a callback', function(done) {
+            luxafor.readFromDevice(() => { done(); });
         });
     });
 
