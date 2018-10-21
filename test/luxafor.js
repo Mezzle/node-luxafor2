@@ -39,6 +39,14 @@ describe('Luxafor', function() {
         });
     });
 
+    describe('#readFromDevice()', function() {
+        it('should be able to read the off state', function() {
+            luxafor.readFromDevice().then((reply) => {
+                assert.strictEqual(API.REPLY.OFF.compare(reply), 0);
+            });
+        });
+    });
+
     describe('#getApiValue()', function() {
         it('should be able to fetch API values', function() {
             assert.strictEqual(Luxafor.getApiValue('color', 'blue'), API.COLOR.BLUE);
