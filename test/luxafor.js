@@ -1,5 +1,6 @@
 const assert = require('assert');
 const {Luxafor, API} = require('..');
+const FOO = { BAR: 0x69 }; // A value unique to this test and outside the API
 
 describe('Luxafor', function() {
 
@@ -24,7 +25,7 @@ describe('Luxafor', function() {
 
     describe('#resetWriteBuffer()', function() {
         it('should be able to reset a previously set write buffer', function() {
-            luxafor.buffer = Buffer.from([0x69]);
+            luxafor.buffer = Buffer.from([FOO.BAR]);
             luxafor.resetWriteBuffer(1);
             assert.strictEqual(luxafor.buffer.readUInt8(0,1), 0);
         });
@@ -33,8 +34,8 @@ describe('Luxafor', function() {
     describe('#setWriteBufferByte()', function() {
         it('should be able to write a byte in the write buffer', function() {
             luxafor.resetWriteBuffer(1);
-            luxafor.setWriteBufferByte(0, 0x69);
-            assert.strictEqual(luxafor.buffer.readUInt8(0,1), 0x69);
+            luxafor.setWriteBufferByte(0, FOO.BAR);
+            assert.strictEqual(luxafor.buffer.readUInt8(0,1), FOO.BAR);
         });
     });
 
@@ -52,7 +53,7 @@ describe('Luxafor', function() {
 
     describe('#findApiReply()', function() {
         let goodBuffer = Buffer.from([0, 9, 0, 0, 0, 0, 0, 0]);
-        let badBuffer = Buffer.from([0x69]);
+        let badBuffer = Buffer.from([FOO.BAR]);
         it('should return the name of a valid buffer', function() {
             assert.strictEqual(Luxafor.findApiReply(goodBuffer), 'PATTERN');
         });
