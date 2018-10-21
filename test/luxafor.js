@@ -4,10 +4,9 @@ const {Luxafor, API} = require('..');
 
 
 describe('Luxafor', function() {
-
     var luxafor = new Luxafor();
-
     beforeEach(function() {
+        luxafor = new Luxafor();
         luxafor.init();
     });
 
@@ -40,6 +39,19 @@ describe('Luxafor', function() {
         });
         it('should return null if there is nothing to find', function() {
             assert.strictEqual(Luxafor.getApiValue('wave_type', 'disco'), null);
+        });
+    });
+
+    describe('#findApiReply()', function() {
+        let goodBuffer = Buffer.from([0, 9, 0, 0, 0, 0, 0, 0]);
+        let badBuffer = Buffer.from([0x69]);
+        it('should return the name of a valid buffer', function() {
+            assert.strictEqual(Luxafor.findApiReply(goodBuffer), 'PATTERN');
+        });
+        it('should throw an error if it is an unknown byte', function() {
+            assert.throws(() => {
+                Luxafor.findApiReply(badBuffer);
+            }, Error);
         });
     });
 
