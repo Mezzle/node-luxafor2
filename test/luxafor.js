@@ -1,8 +1,6 @@
 const assert = require('assert');
 const {Luxafor, API} = require('..');
 
-
-
 describe('Luxafor', function() {
     var luxafor = new Luxafor();
     beforeEach(function() {
