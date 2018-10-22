@@ -71,6 +71,11 @@ describe('Luxafor', function() {
         });
     });
 
+    /** The light doesn't reply for these.  Not testable. */
+    describe.skip('#simpleColor()', function() { });
+    describe.skip('#color()', function() { });
+    describe.skip('#colorFade()', function() { });
+
     describe('#getApiValue()', function() {
         it('should be able to fetch API values', function() {
             assert.strictEqual(Luxafor.getApiValue('color', 'blue'), API.COLOR.BLUE);
