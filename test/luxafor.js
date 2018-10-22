@@ -51,6 +51,26 @@ describe('Luxafor', function() {
         });
     });
 
+    describe('#writeToDevice()', function() {
+        it('should be able to write to the device', function(done) {
+            luxafor.buffer = Buffer.from([0,0]);
+            try {
+                luxafor.writeToDevice();
+                done();
+            } catch(err) {
+                done(err);
+            }
+        });
+        it('should accept a callback', function(done) {
+            luxafor.buffer = Buffer.from([0,0]);
+            try {
+                luxafor.writeToDevice(() => { done(); });
+            } catch(err) {
+                done(err);
+            }
+        });
+    });
+
     describe('#getApiValue()', function() {
         it('should be able to fetch API values', function() {
             assert.strictEqual(Luxafor.getApiValue('color', 'blue'), API.COLOR.BLUE);
