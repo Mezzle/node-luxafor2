@@ -39,6 +39,16 @@ describe('Luxafor', function() {
         });
     });
 
+    describe('#readFromDeviceUntil()', function() {
+        it('should get a byte from the device', function(done) {
+            luxafor.readFromDeviceUntil(API.REPLY.OFF).then(() => {
+                done();
+            }).catch((err) => {
+                done(err);
+            });
+        });
+    });
+
     describe('#writeToDevice()', function() {
         it('should be able to write to the device', function(done) {
             luxafor.buffer = Buffer.from([0,0]);
