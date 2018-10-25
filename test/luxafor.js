@@ -39,18 +39,6 @@ describe('Luxafor', function() {
         });
     });
 
-    describe('#readFromDevice()', function() {
-        it('should be able to read the OFF state', function(done) {
-            luxafor.readFromDevice().then((reply) => {
-                assert.strictEqual(API.REPLY.OFF.compare(reply), 0);
-                done();
-            }).catch(done);
-        });
-        it('should take a callback', function(done) {
-            luxafor.readFromDevice(() => { done(); });
-        });
-    });
-
     describe('#writeToDevice()', function() {
         it('should be able to write to the device', function(done) {
             luxafor.buffer = Buffer.from([0,0]);
